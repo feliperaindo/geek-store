@@ -4,9 +4,9 @@ import { Product } from '../../types/Product';
 import Order from './order.model';
 import User from './user.model';
 
-export type ProductInputtableTypes = Optional<Product, 'id'>;
-type ProductSequelizeModelCreator = ModelDefined<Product, ProductInputtableTypes>;
-export type ProductSequelizeModel = Model<Product, ProductInputtableTypes>;
+export type ProductInputTableTypes = Optional<Product, 'id'>;
+type ProductSequelizeModelCreator = ModelDefined<Product, ProductInputTableTypes>;
+export type ProductSequelizeModel = Model<Product, ProductInputTableTypes>;
 
 const ProductModel: ProductSequelizeModelCreator = db.define('Product', {
   id: {

@@ -2,9 +2,9 @@ import { DataTypes, Model, ModelDefined, Optional } from 'sequelize';
 import db from './index';
 import { Order } from '../../types/Order';
 
-type OrderInputtableTypes = Optional<Order, 'id'>;
-type OrderSequelizeModelCreator = ModelDefined<Order, OrderInputtableTypes>;
-export type OrderSequelizeModel = Model<Order, OrderInputtableTypes>;
+type OrderInputTableTypes = Optional<Order, 'id'>;
+type OrderSequelizeModelCreator = ModelDefined<Order, OrderInputTableTypes>;
+export type OrderSequelizeModel = Model<Order, OrderInputTableTypes>;
 
 const OrderModel: OrderSequelizeModelCreator = db.define('Order', {
   id: {
