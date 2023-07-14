@@ -3,7 +3,7 @@ import { Order } from '../../types/Order';
 
 export default {
   up(queryInterface: QueryInterface) {
-    return queryInterface.createTable<Model<Order>>('orders', {
+    return queryInterface.createTable<Model<Order<undefined>>>('orders', {
       id: {
         type: DataTypes.INTEGER.UNSIGNED,
         primaryKey: true,

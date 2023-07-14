@@ -1,6 +1,12 @@
 export type Product = {
-  id: number;
+  id?: number;
   name: string;
-  price: number;
+  price: string;
   orderId: number;
+};
+
+export type SuccessPost = {
+  id?: number,
+  name: string,
+  price: string
 };

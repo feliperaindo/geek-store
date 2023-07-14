@@ -1,5 +1,9 @@
-export type Order = {
+export type Id = {
+  id: number
+};
+
+export type Order<TypeIds> = {
   id: number;
   userId: number;
-  productId?: number;
+  productIds?: TypeIds,
 };
