@@ -5,7 +5,7 @@ import { Request, Response } from 'express';
 import { productService } from '../service/exporter';
 
 async function allProducts(__request: Request, response: Response): Promise<Response> {
-  const all = productService.getAll();
+  const all = await productService.getAll();  
   return response.status(200).send(all);
 }
 

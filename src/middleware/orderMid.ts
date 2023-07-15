@@ -15,9 +15,9 @@ export function validateToken(request: Request, __response: Response, next: Next
   }
 }
 
-export function orderFieldMid(__request: Request, __response: Response, next: NextFunction) : void {
+export function orderFieldMid(request: Request, __response: Response, next: NextFunction) : void {
   try {
-    console.log('passei aqui');
+    utils.orderFields(request.body);
     next();
   } catch (e) {
     const error = e as ErrorType;
@@ -25,9 +25,10 @@ export function orderFieldMid(__request: Request, __response: Response, next: Ne
   }
 }
 
-export function orderInfoMid(__request: Request, __response: Response, next: NextFunction) : void {
+export function orderInfoMid(request: Request, __response: Response, next: NextFunction) : void {
   try {
-    console.log('passei aqui');
+    utils.validateUserId(request.body.userId);
+    utils.validadeProductIds(request.body.productIds);
     next();
   } catch (e) {
     const error = e as ErrorType;

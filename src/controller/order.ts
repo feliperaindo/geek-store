@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from 'express';
 import { ErrorType } from '../types/exporter';
 
 // Service
-import { orderService } from '../service/exporter';
+import { orderService, userService } from '../service/exporter';
 
 async function allOrders(__request: Request, response: Response): Promise<Response> {
   const all = await orderService.getAll();
@@ -16,11 +16,12 @@ async function registerOrder(
   next: NextFunction,
 ) : Promise<Response | void> {
   try {
+    await userService.getUserById(request.body.userId);  
     const success = await orderService.postOrder(request.body);
     return response.status(201).send(success);
   } catch (e) {
     const error = e as ErrorType;
-    next({ error: error.message, http: 422 });
+    next({ message: error.message, http: 404 });
   }
 }
 

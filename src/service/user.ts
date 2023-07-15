@@ -21,4 +21,14 @@ async function verifyUser({ username, password }: types.Login) : Promise<types.T
   return { token: utils.jwt.tokenGenerator({ password, username }) };
 }
 
-export default { verifyUser };
+async function getUserById(id: string) : Promise<types.UserSequelizeModel> {
+  const user = await userModel.findByPk(id);
+
+  if (user === null) {
+    throw new Error('"userId" not found');
+  }
+
+  return user;
+}
+
+export default { verifyUser, getUserById };

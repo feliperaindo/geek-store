@@ -11,7 +11,15 @@ export function stringLengthChecker(value: string) : boolean {
   return value.length > minLength;
 }
 
-export function isEmpty(value: string) : boolean {
+export function numberChecker(value: unknown) : boolean {
+  return typeof value === 'number';
+}
+
+export function arrayChecker(value: unknown) : boolean {
+  return Array.isArray(value);
+}
+
+export function isEmpty(value: string | []) : boolean {
   const empty = 0;
   return value.length > empty;
 }

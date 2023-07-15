@@ -11,7 +11,11 @@ const order = Router();
 
 order.get('/', orderController.allOrders);
 
-order.use(middleware.orderMid.validateToken);
+order.use([
+  middleware.orderMid.validateToken,
+  middleware.orderMid.orderFieldMid,
+  middleware.orderMid.orderInfoMid,
+]);
 
 order.post('/', orderController.registerOrder);
 
