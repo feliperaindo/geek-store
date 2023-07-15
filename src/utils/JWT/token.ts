@@ -13,4 +13,8 @@ function tokenGenerator(payload: Login): string {
   return jwt.sign(payload, SECRET, config);
 }
 
-export default tokenGenerator;
+function tokenValidator(token: string) : Login {
+  return jwt.verify(token, SECRET, config) as Login;
+}
+
+export default { tokenGenerator, tokenValidator };

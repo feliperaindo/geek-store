@@ -1,4 +1,4 @@
 import bcrypt from './bcrypt/hash';
-import tokenGenerator from './JWT/token';
+import jwt from './JWT/token';
 
-export default { tokenGenerator, bcrypt };
+export default { jwt, bcrypt };

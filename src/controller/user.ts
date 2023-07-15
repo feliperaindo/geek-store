@@ -5,11 +5,6 @@ import { ErrorType } from '../types/exporter';
 // Service
 import { userService } from '../service/exporter';
 
-async function allUsers(__request: Request, response: Response): Promise<Response> {
-  const all = await userService.getAll();
-  return response.status(200).send(all);
-}
-
 async function singIn(
   request: Request, 
   response: Response, 
@@ -24,4 +19,4 @@ async function singIn(
   }
 }
 
-export default { allUsers, singIn };
+export default { singIn };

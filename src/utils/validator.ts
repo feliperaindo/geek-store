@@ -1,6 +1,9 @@
 // Types
 import { Login, NameOrPrice, Product } from '../types/exporter';
 
+// utils
+import utils from './exporter';
+
 // helpers
 import * as helpers from '../helpers/checkers';
 
@@ -29,5 +32,19 @@ export function validateNameAndPrice(data: unknown, field: NameOrPrice) : void {
 
   if (!helpers.stringLengthChecker(data as string)) {
     throw new Error(`"${field}" length must be at least 3 characters long`);
+  }
+}
+
+export function validateToken(token: string | undefined) : void {
+  if (!token) {
+    throw new Error('Token not found');
+  }
+
+  const tokenHash = token.split(/Bearer /)[1];
+  
+  try {
+    utils.jwt.tokenValidator(tokenHash);
+  } catch (e) {
+    throw new Error('Invalid token');
   }
 }
