@@ -1,7 +1,14 @@
-import { Login } from '../types/exporter';
-
-export function keyChecker(obj: Login, key: string) : boolean {
+export function keyChecker<T>(obj: T, key: string) : boolean {
   return Object.prototype.hasOwnProperty.call(obj, key);
+}
+
+export function stringChecker(value: unknown) : boolean {
+  return typeof value === 'string';
+}
+
+export function stringLengthChecker(value: string) : boolean {
+  const minLength = 2;
+  return value.length > minLength;
 }
 
 export function isEmpty(value: string) : boolean {

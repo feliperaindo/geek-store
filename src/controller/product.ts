@@ -1,5 +1,7 @@
+// Types
 import { Request, Response } from 'express';
 
+// Service
 import { productService } from '../service/exporter';
 
 async function allProducts(__request: Request, response: Response): Promise<Response> {

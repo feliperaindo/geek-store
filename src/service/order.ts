@@ -1,5 +1,7 @@
+// Types
 import { Order } from '../types/Order';
 
+// Models
 import { orderModel, productModel } from '../database/models/exporter';
 
 async function getAll(): Promise<Order<number[]>[]> {

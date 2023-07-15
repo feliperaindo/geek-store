@@ -3,11 +3,11 @@ import { NextFunction, Request, Response } from 'express';
 import { ErrorType } from '../types/exporter';
 
 // utils
-import loginFields from '../utils/validator';
+import * as utils from '../utils/validator';
 
 function loginMid(request: Request, __response: Response, next: NextFunction): void {
   try {
-    loginFields(request.body);
+    utils.loginFields(request.body);
     next();
   } catch (e) {
     const error = e as ErrorType;

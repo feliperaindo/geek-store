@@ -1,6 +1,7 @@
-import { Product, SuccessPost } from '../types/Product';
-import { ProductSequelizeModel } from '../database/models/product.model';
+// Types
+import { Product, SuccessPost, ProductSequelizeModel } from '../types/exporter';
 
+// Model
 import { productModel } from '../database/models/exporter';
 
 async function getAll(): Promise<ProductSequelizeModel[]> {

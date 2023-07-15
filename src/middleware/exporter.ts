@@ -1,4 +1,5 @@
 import errorMid from './errorMid';
 import loginMid from './loginMid';
+import * as productMid from './productMid';
 
-export default { errorMid, loginMid };
+export { errorMid, loginMid, productMid };

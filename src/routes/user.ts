@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import middleware from '../middleware/exporter';
+import * as middleware from '../middleware/exporter';
 
 import { userController } from '../controller/exporter';
 

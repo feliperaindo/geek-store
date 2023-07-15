@@ -2,7 +2,8 @@
 import { DataTypes, Model, ModelDefined, Optional } from 'sequelize';
 
 // Types
-import { Id, Order } from '../../types/Order';
+import { Order } from '../../types/Order';
+import { Id } from '../../types/Id';
 
 // Database
 import db from './index';
