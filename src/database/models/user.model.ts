@@ -1,6 +1,11 @@
+// Bibliotecas
 import { DataTypes, Model, ModelDefined, Optional } from 'sequelize';
-import db from './index';
+
+// Types
 import { User } from '../../types/User';
+
+// Database
+import db from './index';
 
 type UserInputTableTypes = Optional<User, 'id'>;
 type UserSequelizeModelCreator = ModelDefined<User, UserInputTableTypes>;

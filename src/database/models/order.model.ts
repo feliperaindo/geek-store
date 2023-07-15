@@ -1,6 +1,11 @@
+// Bibliotecas
 import { DataTypes, Model, ModelDefined, Optional } from 'sequelize';
-import db from './index';
+
+// Types
 import { Id, Order } from '../../types/Order';
+
+// Database
+import db from './index';
 
 type OrderInputTableTypes = Optional<Order<Id[]>, 'id'>;
 type OrderSequelizeModelCreator = ModelDefined<Order<Id[]>, OrderInputTableTypes>;

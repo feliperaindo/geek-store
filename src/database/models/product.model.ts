@@ -1,8 +1,15 @@
+// Bibliotecas
 import { DataTypes, Model, ModelDefined, Optional } from 'sequelize';
-import db from './index';
+
+// Types
 import { Product } from '../../types/Product';
+
+// Models
 import Order from './order.model';
 import User from './user.model';
+
+// Database
+import db from './index';
 
 export type ProductInputTableTypes = Optional<Product, 'id'>;
 type ProductSequelizeModelCreator = ModelDefined<Product, ProductInputTableTypes>;

@@ -42,6 +42,7 @@ services:
       DB_PORT: 3306
       DB_NAME: Trybesmith
       JWT_SECRET: secret
+      BCRYPT_SALT_ROUNDS: 10
 
   # Serviço que irá rodar o banco de dados
   db:
