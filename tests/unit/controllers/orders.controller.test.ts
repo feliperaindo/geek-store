@@ -4,7 +4,7 @@ import chai, { expect } from 'chai';
 import sinonChai from 'sinon-chai';
 
 // Types
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import { ErrorType } from '../../../src/types/exporter';
 
 // Configuração
@@ -14,7 +14,7 @@ chai.use(sinonChai);
 import * as mocks from '../../mocks/exporter';
 
 // Service
-import { orderService } from '../../../src/service/exporter'
+import { orderService, userService } from '../../../src/service/exporter'
 
 // Camada controller a ser testada
 import { orderController } from '../../../src/controller/exporter';
@@ -51,7 +51,16 @@ describe('Sequência de testes sobre a camada controller responsável pelas orde
     });
 
     it('Verifica se é possível registrar com sucesso uma nova ordem', async function () {
-      const fakeService = sinon.stub(orderService, 'postOrder').resolves()
+      req.body = mocks.orders.NEW_ORDER;
+      const fakePostService = sinon.stub(orderService, 'postOrder').resolves(mocks.orders.SUCCESS_ORDER_REGISTER);
+      const fakeGetService = sinon.stub(userService, 'getUserById').resolves();
+
+      await orderController.registerOrder(req, res, next as NextFunction);
+
+      sinon.assert.calledOnce(fakeGetService);
+      sinon.assert.calledOnce(fakePostService);
+      expect(res.status).to.have.been.calledWith(201);
+      expect(res.send).to.have.been.calledWith(mocks.orders.SUCCESS_ORDER_REGISTER);
     });
   });
 
