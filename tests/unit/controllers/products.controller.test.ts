@@ -5,7 +5,6 @@ import sinonChai from 'sinon-chai';
 
 // Types
 import { Request, Response } from 'express';
-import * as Types from '../../../src/types/exporter';
 
 // Configuração
 chai.use(sinonChai);
