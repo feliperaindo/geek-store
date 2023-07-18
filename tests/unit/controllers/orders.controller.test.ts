@@ -52,7 +52,8 @@ describe('Sequência de testes sobre a camada controller responsável pelas orde
 
     it('Verifica se é possível registrar com sucesso uma nova ordem', async function () {
       req.body = mocks.orders.NEW_ORDER;
-      const fakePostService = sinon.stub(orderService, 'postOrder').resolves(mocks.orders.SUCCESS_ORDER_REGISTER);
+      const fakePostService = sinon.stub(orderService, 'postOrder')
+        .resolves(mocks.orders.SUCCESS_ORDER_REGISTER);
       const fakeGetService = sinon.stub(userService, 'getUserById').resolves();
 
       await orderController.registerOrder(req, res, next as NextFunction);
@@ -64,4 +65,21 @@ describe('Sequência de testes sobre a camada controller responsável pelas orde
     });
   });
 
+  describe('Sequência de testes para casos de falha', function () {
+    beforeEach(function () {
+      res.status = sinon.stub().returns(res);
+      res.send = sinon.stub().returns(res);
+      sinon.restore();
+    });
+
+    it('Verifica se é lançado um erro quando o usuário não é encontrado', async function () {
+      const fakeGetService = sinon.stub(userService, 'getUserById').rejects(new Error('Error message'));
+
+      await orderController.registerOrder(req, res, next as NextFunction);
+
+      sinon.assert.calledOnce(fakeGetService);
+      expect(res.status).to.have.been.calledWith(404);
+      expect(res.send).to.have.been.calledWith({ message: 'Error message' });
+    });
+  });
 });
