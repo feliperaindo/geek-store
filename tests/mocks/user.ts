@@ -14,9 +14,27 @@ export const USER_2: User = {
   password: 'senha do bárbaro',
   username: 'Touros o Bárbaro',
   vocation: 'Bárbaro', 
-}
+};
 
 export const USER_LOGIN_1: Login = {
   username: USER_1.username,
   password: USER_1.password,
-}
+};
+
+export const USER_LOGIN_NO_USERNAME = {
+  password: USER_1.password,
+};
+
+export const USER_LOGIN_NO_PASSWORD = {
+  username: USER_1.username,
+};
+
+export const USER_LOGIN_EMPTY_PASSWORD = {
+  username: USER_1.username,
+  password: '',
+};
+
+export const USER_LOGIN_EMPTY_USERNAME = {
+  username: '',
+  password: USER_1.password,
+};

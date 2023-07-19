@@ -49,7 +49,7 @@ export function validateUserId(userId: unknown) : void {
   }
 }
 
-export function validadeProductIds(productIds: unknown) : void {
+export function validateProductIds(productIds: unknown) : void {
   if (!helpers.arrayChecker(productIds)) {
     throw new Error('"productIds" must be an array');
   }

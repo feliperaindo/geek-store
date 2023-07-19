@@ -31,4 +31,8 @@ export const PRODUCTS_ORDER: Product[] = [
   { id: 8, name: 'Punho de aço', orderId: 4, price: '10 moedas de prata' },
 ]
 
-export const PRODUCT_LIST: Product[] = [PRODUCT_1, PRODUCT_2]
+export const PRODUCT_LIST: Product[] = [PRODUCT_1, PRODUCT_2];
+
+export const PRODUCT_NO_PRICE = { name: 'Manopla do infinito' };
+
+export const PRODUCT_NO_NAME = { price: 'Alma do Tony Stark' };

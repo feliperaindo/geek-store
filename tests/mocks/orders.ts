@@ -14,4 +14,8 @@ export const ORDER_RETURN: Order<number[]>[] = [
 
 export const NEW_ORDER: Order<number[]> = { id: 4, userId: 5, productIds: [7, 9] };
 
-export const SUCCESS_ORDER_REGISTER: Order<number[]> = { userId: 5, productIds: [7, 9] }
+export const SUCCESS_ORDER_REGISTER: Order<number[]> = { userId: 5, productIds: [7, 9] };
+
+export const ORDER_NO_USER_ID = { productIds: [7, 9] };
+
+export const ORDER_NO_PRODUCT_IDS = { userId: 5 };

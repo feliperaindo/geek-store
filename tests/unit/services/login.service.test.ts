@@ -1,6 +1,7 @@
 // Bibliotecas
 import sinon from 'sinon';
 import bcrypt from 'bcryptjs'
+import jwt from 'jsonwebtoken';
 import chai, { expect } from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 
@@ -41,7 +42,7 @@ describe('Sequência de testes sobre a camada service que gerenciar funções de
   
       const fakeMethod = sinon.stub(userModel, 'findOne').resolves(fakeModel);
       const fakeBcrypt = sinon.stub(bcrypt, 'compare').resolves(true);
-      const fakeJwt = sinon.stub(utils.jwt, 'tokenGenerator').returns('valid token');
+      const fakeJwt = sinon.stub(jwt, 'sign').callsFake(() => 'valid token');
   
       const user = await userService.verifyUser(mock.users.USER_LOGIN_1);
   

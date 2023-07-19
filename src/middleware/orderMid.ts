@@ -28,7 +28,7 @@ export function orderFieldMid(request: Request, __response: Response, next: Next
 export function orderInfoMid(request: Request, __response: Response, next: NextFunction) : void {
   try {
     utils.validateUserId(request.body.userId);
-    utils.validadeProductIds(request.body.productIds);
+    utils.validateProductIds(request.body.productIds);
     next();
   } catch (e) {
     const error = e as ErrorType;
