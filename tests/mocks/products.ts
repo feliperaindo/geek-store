@@ -36,3 +36,7 @@ export const PRODUCT_LIST: Product[] = [PRODUCT_1, PRODUCT_2];
 export const PRODUCT_NO_PRICE = { name: 'Manopla do infinito' };
 
 export const PRODUCT_NO_NAME = { price: 'Alma do Tony Stark' };
+
+export const PRODUCT_INCORRECT = { name: 10, price: 'Alma do Tony Stark' };
+
+export const PRODUCT_INCORRECT_2 = { name: 'Manopla do infinito', price: false };
