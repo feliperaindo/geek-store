@@ -19,3 +19,7 @@ export const SUCCESS_ORDER_REGISTER: Order<number[]> = { userId: 5, productIds: 
 export const ORDER_NO_USER_ID = { productIds: [7, 9] };
 
 export const ORDER_NO_PRODUCT_IDS = { userId: 5 };
+
+export const ORDER_INCORRECT = { id: 4, userId: 'uma string', productIds: [7, 9] };
+
+export const ORDER_INCORRECT_2 = { id: 4, userId: 5, productIds: false };
