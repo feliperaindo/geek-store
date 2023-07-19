@@ -4,13 +4,13 @@ import { expect } from 'chai';
 import { describe, it } from 'mocha';
 
 // Mocks
-import * as mock from '../../mocks/exporter'
+import * as mock from '../../mocks/exporter';
 
 // Model
-import { orderModel, productModel, db } from '../../../src/database/models/exporter'
+import { orderModel, productModel } from '../../../src/database/models/exporter';
 
 // Camada service a ser testada
-import { orderService } from '../../../src/service/exporter'
+import { orderService } from '../../../src/service/exporter';
 
 describe('Sequência de testes sobre a camada service responsável pelas ordens', function () {
   beforeEach(function () { sinon.restore(); });
@@ -18,7 +18,7 @@ describe('Sequência de testes sobre a camada service responsável pelas ordens'
   it('Verifica se ao requisitar todas as orders o valor recebido é correto', async function () {
     const fakeModel = orderModel.bulkBuild(
       mock.orders.ORDER,
-      { include: { model: productModel, as: 'productIds', attributes: ['id'] } }
+      { include: { model: productModel, as: 'productIds', attributes: ['id'] } },
     );
 
     const fakeMethod = sinon.stub(orderModel, 'findAll').resolves(fakeModel);
@@ -26,7 +26,7 @@ describe('Sequência de testes sobre a camada service responsável pelas ordens'
     const allOrders = await orderService.getAll();
 
     sinon.assert.calledOnce(fakeMethod);
-    expect(allOrders).to.be.deep.equal(mock.orders.ORDER_RETURN)
+    expect(allOrders).to.be.deep.equal(mock.orders.ORDER_RETURN);
   });
 
   it('verifica se a camada cadastra corretamente o produto', async function () {

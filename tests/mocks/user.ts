@@ -1,4 +1,4 @@
-import { Login, User } from "../../src/types/exporter";
+import { Login, User } from '../../src/types/exporter';
 
 export const USER_1: User = {
   id: 1,

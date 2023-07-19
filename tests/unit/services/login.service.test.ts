@@ -1,16 +1,10 @@
 // Bibliotecas
 import sinon from 'sinon';
-import bcrypt from 'bcryptjs'
+import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import chai, { expect } from 'chai';
 import { describe, it } from 'mocha';
 import chaiAsPromised from 'chai-as-promised';
-
-// Configuração
-chai.use(chaiAsPromised)
-
-// utils
-import utils from '../../../src/utils/exporter';
 
 // mocks
 import * as mock from '../../mocks/exporter';
@@ -20,6 +14,9 @@ import { userModel } from '../../../src/database/models/exporter';
 
 // Camada service a ser testada
 import { userService } from '../../../src/service/exporter';
+
+// Configuração
+chai.use(chaiAsPromised);
 
 describe('Sequência de testes sobre a camada service que gerenciar funções de usuário', function () {
   beforeEach(function () { sinon.restore(); });
@@ -51,8 +48,8 @@ describe('Sequência de testes sobre a camada service que gerenciar funções de
       sinon.assert.calledOnce(fakeMethod);
       sinon.assert.calledOnce(fakeBcrypt);
       expect(user).to.be.deep.equal({ token: 'valid token' });
-    })
-  })
+    });
+  });
   
   describe('Sequência de testes para casos de falha', function () {
     beforeEach(function () { sinon.restore(); });
@@ -64,7 +61,7 @@ describe('Sequência de testes sobre a camada service que gerenciar funções de
   
       return expect(captureError()).to.eventually.be.rejectedWith(/^"userId" not found$/)
         .to.be.an.instanceOf(Error);
-    })
+    });
 
     it('Verifica se ao tentar validar um usuário não existente a camada retorna um erro', async function () {
       sinon.stub(userModel, 'findOne').resolves(null);

@@ -1,11 +1,8 @@
 // Bibliotecas
 import sinon from 'sinon';
-import sinonChai from "sinon-chai";
-import chai, { expect } from "chai";
+import sinonChai from 'sinon-chai';
+import chai, { expect } from 'chai';
 import { describe, it } from 'mocha';
-
-// Configuração
-chai.use(sinonChai);
 
 // Types
 import { Request, Response, NextFunction } from 'express';
@@ -16,6 +13,9 @@ import * as mocks from '../../mocks/exporter';
 
 // Middleware a ser testado
 import { loginMid } from '../../../src/middleware/exporter';
+
+// Configuração
+chai.use(sinonChai);
 
 describe('Sequência de testes sobre o middleware de login', function () {
   const req = {} as Request;
@@ -28,19 +28,19 @@ describe('Sequência de testes sobre o middleware de login', function () {
     next = sinon.stub().returns(null);
   });
 
-  it("Verifica se em caso de sucesso não é lançado nenhum erro", function () {
+  it('Verifica se em caso de sucesso não é lançado nenhum erro', function () {
     req.body = mocks.users.USER_LOGIN_1;
     loginMid(req, res, next);
 
     expect(next).to.have.been.calledOnce;
-    expect(next).to.have.been.calledWith()
+    expect(next).to.have.been.calledWith();
   });
 
   it('Verifica se em caso de erro a função next é chamada corretamente', function () {
     req.body = mocks.users.USER_LOGIN_EMPTY_PASSWORD;
     loginMid(req, res, next);
 
-    expect(next).to.have.been.calledOnce
-    expect(next).to.have.been.calledWith(error)
+    expect(next).to.have.been.calledOnce;
+    expect(next).to.have.been.calledWith(error);
   });
 });

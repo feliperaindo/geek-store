@@ -7,9 +7,6 @@ import { describe, it } from 'mocha';
 // Types
 import { NextFunction, Request, Response } from 'express';
 
-// Configuração
-chai.use(sinonChai);
-
 // Mocks
 import * as mock from '../../mocks/exporter';
 
@@ -19,7 +16,10 @@ import { userService } from '../../../src/service/exporter';
 // Camada controller a ser testada
 import { userController } from '../../../src/controller/exporter';
 
-describe('Sequência de testes sobre a camada controller responsável pelo Login', function () {
+// Configuração
+chai.use(sinonChai);
+
+describe('Sequência de testes sobre a camada controller responsável pelo Login', () => {
   const req = {} as Request;
   const res = {} as Response;
   const next = sinon.stub().returns(null) as NextFunction;
@@ -30,7 +30,7 @@ describe('Sequência de testes sobre a camada controller responsável pelo Login
     sinon.restore();
   });
 
-  it('Verifica o retorno da função em caso do envio de um usuário válido', async function () {
+  it('Verifica o retorno da função em caso do envio de um usuário válido', async () => {
     req.body = mock.users.USER_LOGIN_1;
     const fakeService = sinon.stub(userService, 'verifyUser').resolves({ token: 'valid token' });
 
@@ -43,7 +43,7 @@ describe('Sequência de testes sobre a camada controller responsável pelo Login
     expect(res.send).to.have.been.calledWith({ token: 'valid token' });
   });
 
-  it('Verifica se a função next é chamada caso um usuário não seja encontrado', async function () {
+  it('Verifica se a função next é chamada caso um usuário não seja encontrado', async () => {
     const fakeService = sinon.stub(userService, 'verifyUser')
       .rejects(new Error('Username or password invalid'));
 

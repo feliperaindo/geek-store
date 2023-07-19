@@ -1,4 +1,4 @@
-import { Order, Id } from "../../src/types/exporter";
+import { Order, Id } from '../../src/types/exporter';
 
 export const ORDER: Order<Id[]>[] = [
   { id: 1, userId: 3, productIds: [{ id: 5 }, { id: 2 }] },

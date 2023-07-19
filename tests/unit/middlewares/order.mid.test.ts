@@ -1,12 +1,9 @@
 // Bibliotecas
 import sinon from 'sinon';
 import jwt from 'jsonwebtoken';
-import sinonChai from "sinon-chai";
-import chai, { expect } from "chai";
+import sinonChai from 'sinon-chai';
+import chai, { expect } from 'chai';
 import { describe, it } from 'mocha';
-
-// Configuração
-chai.use(sinonChai);
 
 // Types
 import { Request, Response, NextFunction } from 'express';
@@ -17,6 +14,9 @@ import * as mocks from '../../mocks/exporter';
 
 // Middleware a ser testado
 import { orderMid } from '../../../src/middleware/exporter';
+
+// Configuração
+chai.use(sinonChai);
 
 describe('Sequência de testes sobre o middleware "orderMid"', function () {
   const req = {} as Request;
@@ -35,13 +35,13 @@ describe('Sequência de testes sobre o middleware "orderMid"', function () {
     });
 
     it('Verifica se o mid de validação de token não lança um erro ao receber um token válido', function () {
-      req.headers = { authorization:  'Bearer valid token' };
+      req.headers = { authorization: 'Bearer valid token' };
       const fakeJwt = sinon.stub(jwt, 'verify').callsFake(() => true);
   
       orderMid.validateToken(req, res, next);
   
-      expect(next).to.have.been.calledOnce
-      expect(fakeJwt).to.have.been.calledOnce
+      expect(next).to.have.been.calledOnce;
+      expect(fakeJwt).to.have.been.calledOnce;
       expect(next).to.have.been.calledWith();
       expect(fakeJwt).to.have.been.calledWith('valid token');
     });
@@ -72,15 +72,15 @@ describe('Sequência de testes sobre o middleware "orderMid"', function () {
     });
 
     it('Verifica se é chamada a função next com parâmetro correto ao fornecer um token inválido', function () {
-      req.headers = { authorization:  'Bearer invalid token' };
-      const fakeJwt = sinon.stub(jwt, 'verify').callsFake(() => { throw new Error() });
+      req.headers = { authorization: 'Bearer invalid token' };
+      const fakeJwt = sinon.stub(jwt, 'verify').callsFake(() => { throw new Error(); });
 
       const error: ErrorType = { http: 401, message: 'Invalid token' };
   
       orderMid.validateToken(req, res, next);
   
-      expect(next).to.have.been.calledOnce
-      expect(fakeJwt).to.have.been.calledOnce
+      expect(next).to.have.been.calledOnce;
+      expect(fakeJwt).to.have.been.calledOnce;
       expect(next).to.have.been.calledWith(error);
       expect(fakeJwt).to.have.been.calledWith('invalid token');
     });
@@ -88,7 +88,7 @@ describe('Sequência de testes sobre o middleware "orderMid"', function () {
     it('Verifica se o mid de validação de campos lança erro esperado ao  não fornecer todos os parâmetros', function () {
       req.body = mocks.orders.ORDER_NO_PRODUCT_IDS;
 
-      const error = { message: mocks.constants.ORDER_PRODUCT_IDS_ERROR_STRING, http: 400 }
+      const error = { message: mocks.constants.ORDER_PRODUCT_IDS_ERROR_STRING, http: 400 };
 
       orderMid.orderFieldMid(req, res, next);
 

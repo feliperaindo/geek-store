@@ -1,11 +1,8 @@
 // Bibliotecas
 import sinon from 'sinon';
-import sinonChai from "sinon-chai";
-import chai, { expect } from "chai";
+import sinonChai from 'sinon-chai';
+import chai, { expect } from 'chai';
 import { describe, it } from 'mocha';
-
-// Configuração
-chai.use(sinonChai);
 
 // Types
 import { Request, Response, NextFunction } from 'express';
@@ -13,6 +10,9 @@ import { ErrorType } from '../../../src/types/exporter';
 
 // Middleware a ser testado
 import { errorMid } from '../../../src/middleware/exporter';
+
+// Configuração
+chai.use(sinonChai);
 
 describe('Sequência de testes sobre o middleware de erro', function () {
   const req = {} as Request;

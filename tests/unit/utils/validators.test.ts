@@ -1,21 +1,21 @@
 // Bibliotecas
-import sinon from "sinon";
+import sinon from 'sinon';
 import jwt from 'jsonwebtoken';
-import sinonChai from "sinon-chai";
-import chai, { expect } from "chai";
+import sinonChai from 'sinon-chai';
+import chai, { expect } from 'chai';
 import { describe, it } from 'mocha';
 
 // Types
-import { Login, Order, Product } from "../../../src/types/exporter";
-
-// Configuração
-chai.use(sinonChai);
+import { Login, Order, Product } from '../../../src/types/exporter';
 
 // Mocks
 import * as mocks from '../../mocks/exporter';
 
 // Camada util a ser testada
 import * as utils from '../../../src/utils/validator';
+
+// Configuração
+chai.use(sinonChai);
 
 describe('Sequência de testes sobre as funções utilitárias', function () {
   it('Verifica se são lançados os erros se os campos de login não forem fornecidos', function () {
@@ -30,7 +30,7 @@ describe('Sequência de testes sobre as funções utilitárias', function () {
     
     expect(() => utils.loginFields(mocks.users.USER_LOGIN_EMPTY_USERNAME as Login))
       .to.Throw(mocks.constants.LOGIN_ERROR_MESSAGE);
-  })
+  });
 
   it('Verifica se são lançados os erros caso os campos esperados para produtos não sejam fornecidos', function () {
     expect(() => utils.productFields(mocks.products.PRODUCT_NO_NAME as Product))
@@ -59,7 +59,7 @@ describe('Sequência de testes sobre as funções utilitárias', function () {
       .to.Throw(mocks.constants.SHORT_PRICE);
 
     expect(() => utils.validateNameAndPrice('a', 'name'))
-    .to.Throw(mocks.constants.SHORT_NAME);
+      .to.Throw(mocks.constants.SHORT_NAME);
   });
 
   it('Verifica se a função validateProductIds lança o erro ao fornecer parâmetro incorreto', function () {

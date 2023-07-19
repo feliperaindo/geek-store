@@ -8,17 +8,17 @@ import { describe, it } from 'mocha';
 import { NextFunction, Request, Response } from 'express';
 import { ErrorType } from '../../../src/types/exporter';
 
-// Configuração
-chai.use(sinonChai);
-
 // Mocks
 import * as mocks from '../../mocks/exporter';
 
 // Service
-import { orderService, userService } from '../../../src/service/exporter'
+import { orderService, userService } from '../../../src/service/exporter';
 
 // Camada controller a ser testada
 import { orderController } from '../../../src/controller/exporter';
+
+// Configuração
+chai.use(sinonChai);
 
 describe('Sequência de testes sobre a camada controller responsável pelas ordens', function () {
   const req = {} as Request;

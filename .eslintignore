@@ -4,4 +4,4 @@ src/database/seeders
 __tests__
 jest.config.js
 build/
-tests
+tests/

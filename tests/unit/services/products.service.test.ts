@@ -4,13 +4,13 @@ import { expect } from 'chai';
 import { describe, it } from 'mocha';
 
 // mocks
-import * as mock from '../../mocks/exporter'
+import * as mock from '../../mocks/exporter';
 
 // Model
-import { productModel } from '../../../src/database/models/exporter'
+import { productModel } from '../../../src/database/models/exporter';
 
 // Camada a ser testada
-import { productService } from '../../../src/service/exporter'
+import { productService } from '../../../src/service/exporter';
 
 describe('Sequência de testes sobre a camada service responsável pelos produtos', function () {
   beforeEach(function () { sinon.restore(); });
@@ -24,7 +24,7 @@ describe('Sequência de testes sobre a camada service responsável pelos produto
     
     sinon.assert.calledOnce(fakeMethod);
     expect(all).to.be.deep.equal(fakeModel);
-  })
+  });
 
   it('Verifica o retorno da camada service ao cadastrar um novo produto', async function () {
     const fakeModel = productModel.build(mock.products.PRODUCT_2);
@@ -33,7 +33,7 @@ describe('Sequência de testes sobre a camada service responsável pelos produto
 
     const success = await productService.postProduct(mock.products.PRODUCT_2_NO_ID);
 
-    sinon.assert.calledOnce(fakeMethod)
-    expect(success).to.be.deep.equal(mock.products.PRODUCT_2_RETURN)
-  })
+    sinon.assert.calledOnce(fakeMethod);
+    expect(success).to.be.deep.equal(mock.products.PRODUCT_2_RETURN);
+  });
 });
