@@ -2,6 +2,7 @@
 import sinon from 'sinon';
 import sinonChai from "sinon-chai";
 import chai, { expect } from "chai";
+import { describe, it } from 'mocha';
 
 // Configuração
 chai.use(sinonChai);

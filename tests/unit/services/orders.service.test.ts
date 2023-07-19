@@ -1,6 +1,7 @@
 // Bibliotecas
-import { expect } from 'chai';
 import sinon from 'sinon';
+import { expect } from 'chai';
+import { describe, it } from 'mocha';
 
 // Mocks
 import * as mock from '../../mocks/exporter'

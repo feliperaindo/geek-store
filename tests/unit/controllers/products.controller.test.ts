@@ -1,7 +1,8 @@
 // Bibliotecas
 import sinon from 'sinon';
-import chai, { expect } from 'chai';
 import sinonChai from 'sinon-chai';
+import chai, { expect } from 'chai';
+import { describe, it } from 'mocha';
 
 // Types
 import { Request, Response } from 'express';

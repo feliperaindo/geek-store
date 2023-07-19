@@ -1,5 +1,6 @@
 // Bibliotecas
 import { expect } from 'chai';
+import { describe, it } from 'mocha';
 
 // Camada a helpers a ser testada
 import * as helpers from '../../../src/helpers/checkers';

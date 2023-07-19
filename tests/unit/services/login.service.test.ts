@@ -3,6 +3,7 @@ import sinon from 'sinon';
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken';
 import chai, { expect } from 'chai';
+import { describe, it } from 'mocha';
 import chaiAsPromised from 'chai-as-promised';
 
 // Configuração
