@@ -34,6 +34,12 @@ export const PRODUCT_2_RETURN = {
   price: SOUL_DRAGON,
 };
 
+export const PRODUCT_1_RETURN = {
+  id: 1,
+  name: 'Arco Atirador do Sol',
+  price: '50 peças de ouro',
+};
+
 export const PRODUCTS_ORDER: Product[] = [
   { id: 7, name: MANOPLA, orderId: 4, price: SOUL_STARK },
   { id: 8, name: 'Punho de aço', orderId: 4, price: '10 moedas de prata' },

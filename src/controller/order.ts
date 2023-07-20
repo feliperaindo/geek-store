@@ -16,7 +16,7 @@ async function registerOrder(
   next: NextFunction,
 ) : Promise<Response | void> {
   try {
-    await userService.getUserById(request.body.userId);  
+    await userService.getUserById(request.body.userId);
     const success = await orderService.postOrder(request.body);
     return response.status(201).send(success);
   } catch (e) {
